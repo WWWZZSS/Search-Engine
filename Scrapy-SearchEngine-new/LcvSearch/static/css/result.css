@@ -1,0 +1,367 @@
+@charset "utf-8";
+html{*overflow:auto;}
+#hd{padding:20px 10px;}
+#bd{margin-bottom:40px;}
+.logo{float:left;margin-top: 6px;margin-right:30px; height:33px;background: url(../img/logo-jike.png) no-repeat center center;background-size: contain;}
+/*input搜索区域*/
+/*********************************************************************************/
+.searchInput {
+  border: 1px solid #ccc; /* 边框颜色更柔和 */
+  padding: 0 15px;
+  outline: none;
+  height: 50px;
+  width: 520px;
+  /*background: url(../img/inputbg.png) no-repeat scroll 10px center; /* 图片背景，微调位置 */
+  background-color: #f9f9f9; /* 背景色更加柔和 */
+  font-size: 17px;
+  border-radius: 25px; /* 圆角边框，让输入框更加现代 */
+  transition: all 0.3s ease; /* 增加过渡效果 */
+}
+
+.searchInput:focus {
+  border-color: #0080cc; /* 聚焦时边框变为蓝色 */
+  box-shadow: 0 0 8px rgba(0, 128, 204, 0.5); /* 增加聚焦时的阴影效果 */
+}
+.inputArea .dataList {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 42px;
+  width: 550px;
+  padding: 5px 0;
+  background: #fff;
+  border: 1px solid #ddd; /* 边框颜色稍微加深 */
+  border-radius: 5px; /* 圆角边框 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 增加阴影效果，使下拉框更立体 */
+  max-height: 300px;
+  z-index: 9999;
+  /*overflow-y: auto;*/
+}
+
+.inputArea .dataList li {
+  padding: 10px 15px;
+  font-size: 17px;
+  color: #333; /* 调整文字颜色 */
+  cursor: pointer;
+  transition: all 0.3s ease; /* 增加过渡效果 */
+}
+
+.inputArea .dataList li:hover {
+  background-color: #f0f0f0;
+  color: #0080cc; /* 高亮时文本颜色变蓝 */
+  font-weight: bold;
+  transform: translateX(10px); /* 鼠标悬停时增加平移效果 */
+}
+
+.inputArea .dataList li.active {
+  background-color: #d3eafc; /* 当前选中的项高亮显示 */
+  color: #0080cc;
+}
+
+.inputArea .searchButton {
+  position: absolute;
+  left: 500px;
+  top: 6px;
+  width: 50px;
+  height: 42px;
+  background: url(../img/search.png) no-repeat center center; /* 背景图片 */
+  background-size: contain; /* 背景图片自适应按钮大小 */
+  border: none;
+  border-radius: 25px; /* 圆角按钮 */
+  color: white; /* 按钮文本颜色 */
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 42px; /* 使文本垂直居中 */
+  cursor: pointer;
+  transition: all 0.3s ease; /* 平滑过渡效果 */
+}
+
+.inputArea .searchButton:hover {
+  background: url(../img/search.png) no-repeat center center; /* 保持背景图片 */
+  background-size: contain; /* 保持背景图片大小 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 悬停时加大阴影 */
+  transform: translateY(-2px); /* 悬停时按钮轻微上浮 */
+}
+
+.inputArea .searchButton:focus {
+  outline: none; /* 移除聚焦时的默认边框 */
+  box-shadow: 0 0 10px rgba(72, 172, 228, 0.6); /* 聚焦时增加蓝色阴影 */
+}
+
+.info{
+ /* font-size: 13px;*/
+}
+/*******************************************************************************/
+.inputArea{float:left;position:relative;}
+.inputArea /*.searchInput{border:1px solid #bfbfbf;padding:0 15px;outline:none;height:35px;*line-height:35px;width:350px; background:url(../img/inputbg.png);font-size:14px;}*/
+.inputArea .searchButton{position:absolute;left:382px;top:0;*top:1px;*left:381px;width:106px;height:38px;background:url(../img/btn_min.png) no-repeat;border:none;cursor:pointer;}
+
+/*返回高级搜索*/
+.inputArea .advanced{position:absolute;font-size:14px;left:500px;top:12px;width:60px;text-decoration:underline;}
+
+/*分界区域，导航*/
+.nav{margin-bottom:24px;height:31px;background:#f9f9f9;border-bottom:1px solid #e0e0e0;padding:5px 0 0 210px;}
+/*.searchList{float:left;padding-left:5px;}
+.searchList .searchItem{float:left;margin-right:15px;font-size:16px;padding:0 3px 2px 3px;cursor:pointer;height:26px; line-height:26px;}
+.searchList .searchItem.current{color:#0080cc;border-bottom:3px solid #9cc813;font-weight:bold;font-size: 19px}*/
+.searchList {
+    display: flex; /* 使用flexbox布局 */
+    padding-left: 5px;
+    align-items: center; /* 垂直居中对齐 */
+}
+
+.searchList .searchItem {
+    margin-right: 15px; /* 保持原有的间距 */
+    font-size: 16px; /* 保持原有的字体大小 */
+    padding: 0 10px; /* 增加水平内边距 */
+    cursor: pointer; /* 保持原有的指针样式 */
+    height: 30px; /* 增加高度 */
+    line-height: 30px; /* 调整行高以垂直居中 */
+    border-radius: 15px; /* 添加圆角 */
+    background-color: #f0f0f0; /* 添加背景色 */
+    transition: background-color 0.3s, color 0.3s; /* 添加过渡效果 */
+    display: flex; /* 使用flexbox布局 */
+    align-items: center; /* 垂直居中对齐 */
+    justify-content: center; /* 水平居中对齐 */
+}
+
+.searchList .searchItem:hover {
+    background-color: #e0e0e0; /* 鼠标悬停时的背景色变化 */
+    color:  #9cc813; /* 鼠标悬停时的文字颜色变化 */
+}
+
+.searchList .searchItem.current {
+    color: #ffffff; /* 选中时的文字颜色 */
+    background-color: #9cc813; /* 选中时的背景色 */
+    border-bottom: none; /* 移除下划线 */
+    font-weight: bold; /* 字体加粗 */
+    font-size: 19px; /* 字体大小 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 添加阴影 */
+}
+.nav .tips{color:#969696;font-size:12px;line-height:24px;*line-height:26px;}
+#container.sideBarHide .nav{padding-left:35px;}
+
+/*#main区域样式*/
+#main{padding:0 215px 0 182px;}
+#main.sideBarHide{padding-left:10px;}
+/*侧边栏搜索条件*/
+.sideBar{position:relative;float:left;margin-left:-172px;width:182px;
+    background-color: #f9f9f9; /* 背景颜色 */
+    border-radius: 8px; /* 圆角边框 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    width: 15%;
+    }
+.sideBar .subfieldContext{margin-bottom:20px;padding-left:10px;}
+.sideBar .subfieldContext li{margin-bottom:5px;margin-top: 10px;cursor:pointer;display: list-item;}
+.sideBar .subfieldContext input[type=text]{width:75px;}
+.sideBar .unit{color:#787878;}
+.name {
+    text-decoration: none; /* 移除下划线 */
+    font-size: 13px;
+    color: #007bff; /* 设置链接颜色，这里使用了Bootstrap的蓝色 */
+    font-weight: bold; /* 字体加粗 */
+    transition: color 0.3s; /* 颜色变化的过渡效果 */
+    padding: 5px 10px; /* 添加一些内边距 */
+    border-radius: 5px; /* 边框圆角 */
+    background-color: #f8f9fa; /* 背景色 */
+    /*border: 1px solid #007bff; /* 边框颜色 */
+    display: inline-block; /* 使padding生效 */
+}
+
+.name:hover {
+    color: #0056b3; /* 鼠标悬停时的颜色变化 */
+    background-color: #e2e6ea; /* 鼠标悬停时的背景色变化 */
+    border-color: #0056b3; /* 鼠标悬停时的边框颜色变化 */
+}
+
+
+
+/*更多按钮*/
+.sideBar .more a:hover{text-decoration:none;}
+.sideBar .more .moreIcon{display:inline-block;position:relative;top:-1px;*top:-3px;left:2px;*left:-1px;width:9px;height:5px;background:url(../img/more.png);}
+.sideBar .more.show .moreIcon{background:url(../img/down.png);top:-2px;}
+
+.sideBar .reset{padding-left:25px;}
+/*siderBar区域显隐控制*/
+.sideBar .sideBarShowHide{position:absolute;right:0px;top:20px;height:177px;width:1px; background:url(../img/line.png) right;}
+.sideBar .sideBarShowHide a{position:absolute;top:70px;left:-11px;display:inline-block;width:12px;height:31px;background:url(../img/lr.png);}
+
+.sideBar .sideBarShowHide a:hover{background-position:0 -31px;}
+
+/*左侧收起样式*/
+#main.sideBarHide .sideBar{margin-left:-191px;*margin-left:-182px;}
+#main.sideBarHide .sideBar .sideBarShowHide{-moz-transform:rotate(180deg); -o-transform:rotate(180deg); -webkit-transform:rotate(180deg); transform:rotate(180deg);}
+#main.sideBarHide .sideBar .sideBarShowHide a{*background:url(../img/ll.png);}
+#main.sideBarHide .sideBar .sideBarShowHide a:hover{*background-position:0 -31px;}
+#main.sideBarHide .sideBar .sideBarShowHide{background:none;}
+
+.resultArea{width:96%}
+.resultArea .resultTotal{position:relative;padding-left:30px;margin-bottom:20px;}
+.resultArea .resultTotal .info{color:#9a9a9a; font-size: 13px;}
+.resultArea .resultTotal .orderOpt{position:absolute;right:50px;}
+.resultArea .resultTotal .orderOpt a{margin-right:10px;color:#0080cc;}
+
+/*搜索结果列表区域*/
+.resultArea .resultList{padding-left:30px;padding-top: 10px;}
+.resultArea .resultList .resultItem{margin-bottom:20px;}
+.resultArea .resultList .resultItem{margin-bottom:30px;}
+.resultArea .resultList .itemHead{margin-bottom:5px;color:#767676;} 
+.resultArea .resultList .itemHead .keyWord{color:#d90909;}
+.resultArea .resultList .itemBody .keyWord{color:#d90909;}
+.resultArea .resultList .itemHead a.title{font-size:18px;color:#0080cc;text-decoration:underline;}
+.resultArea .resultList .itemHead .value{color: #9cc813;}
+.info .value{color: #9cc813;}
+.info label{color: #767676;}
+.resultArea .resultList .itemHead .divsion{margin:0 5px;}
+.resultArea .resultList .itemHead .fileType{margin-right:10px;}
+
+/*搜索内容主体*/
+.resultArea .resultList .itemBody{margin-bottom:5px;line-height:18px;width:90%;font-size:15px;}
+.resultArea .resultList .itemFoot{color:#008000;}
+.resultArea .resultList .itemFoot .info{margin-right:10px;}
+
+.resultArea .pagination{margin-bottom:25px;padding-left:32px;background-color: #f9f9f9; /* 背景色 */
+    border: 1px solid #ddd; /* 边框 */
+    border-radius: 8px; /* 圆角 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    margin-left: 15px;
+    }
+/*相关搜索*/
+.resultArea .dependSearch{margin-bottom:30px;padding-left:32px;font-size:14px;}
+.resultArea .dependSearch h6{float:left;margin-right:15px;font-weight:bold;}
+.resultArea .dependSearch p{margin-bottom:5px;}
+.resultArea .dependSearch a{display:inline-block;margin-right:15px;text-decoration:underline;width:90px; white-space:nowrap; overflow:hidden;text-overflow:ellipsis;}
+.resultArea .searchInResult{padding-left:35px;}
+.resultArea .searchInResult .inResult{position:absolute;right:-190px;top:8px;font-size:14px;text-decoration:underline;}
+.resultArea .searchInResult .searchButton{left:417px;}
+/*历史搜索区域*/
+/*.historyArea{float:right;margin-right:-216px;width:212px;}
+.historyArea h6{margin-bottom:10px;font-weight:bold;}
+.historyArea .historyList{margin-bottom:20px;}
+.historyArea .historyList li{margin-bottom:5px;}*/
+/* 历史搜索区域 */
+.historyArea {
+    float: right;
+    margin-right: -200px;
+    width: 17%; /* 宽度可以调整 */
+    padding: 15px;
+    background-color: #f9f9f9; /* 背景色 */
+    border: 1px solid #ddd; /* 边框 */
+    border-radius: 8px; /* 圆角 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+}
+
+.historyArea h6 {
+    margin-bottom: 20px;
+    padding-top:10px;
+    font-weight: bold;
+    font-size: 13px; /* 更大的标题字体 */
+    color: #333; /* 深色标题 */
+    text-align: center; /* 标题居中 */
+    border-bottom: 2px solid #007bff; /* 底部下划线 */
+    padding-bottom: 5px;
+}
+
+/* 历史记录的列表容器 */
+.historyArea .historyList {
+    display: flex; /* 启用 flex 布局 */
+    flex-wrap: wrap; /* 允许换行 */
+    gap: 13px; /* 每个项之间的间距 */
+    margin: 0;
+    padding: 0;
+    list-style: none; /* 去掉列表符号 */
+}
+
+/* 每个历史记录项 */
+.historyArea .historyList li a {
+    display: inline-block;
+    text-decoration: none; /* 去掉下划线 */
+    font-size: 14px; /* 字体大小 */
+    color: #007bff; /* 蓝色链接 */
+    padding: 8px 12px; /* 内边距 */
+    background-color: #e6f7ff; /* 浅蓝背景 */
+    border-radius: 4px; /* 圆角 */
+    transition: all 0.3s ease; /* 动画效果 */
+    white-space: nowrap; /* 防止文字换行 */
+}
+
+.historyArea .historyList li a:hover {
+    background-color: #007bff; /* 鼠标悬浮时深蓝背景 */
+    color: #fff; /* 悬浮时白色文字 */
+    text-decoration: none;
+}
+
+
+
+
+
+/*左侧分栏区域*/
+.subfield{margin-bottom:5px;margin-top:15px;font-size:13px;font-weight:bold;padding:2px 0 2px 24px;margin-left: 5px;border-bottom: 2px solid #007bff;}
+.subfield:first-child{padding-left:20px;}
+
+
+
+/*立即搜索样式*/
+.subfieldContent .search{margin:45px 0 0 135px;width:130px;height:36px;background:url(../img/btnbg.png); font-weight:bold;border:none;border:1px solid #bfbfbf;line-height:36px;}
+/*联想下拉区域*/
+/*.inputArea .dataList{display:none;position:absolute;left:0;top:42px;*top:43px;width:550px;padding:5px 0;background:#fff;border:1px solid #bfbfbf;border-top:none;}
+.inputArea .dataList li{padding:2px 15px;font-size:14px;}
+.inputArea .dataList li:hover{background:#f0f0f0;color:#0080cc;font-weight:bold;}*/
+
+
+/*版权信息*/
+.foot{position:relative;bottom:0px;width:100%;margin-top: -40px;margin-bottom:50px;}
+.foot .wrap{margin:0 auto;}
+.foot .copyright{position:relative;color:#ababab;text-align:center;}
+
+/*分页样式*/
+.pagination {
+    /*display: flex; /* 使用 flex 布局 */
+    display: block;
+    justify-content: center; /* 内容居中 */
+    align-items: center; /* 垂直居中 */
+    gap: 10px; /* 元素之间的间距 */
+    margin-top: 20px; /* 上边距 */
+    padding: 10px;
+    background-color: #f9f9f9; /* 背景颜色 */
+    border-radius: 8px; /* 圆角边框 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+}
+
+.pagination .current {
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 12px; /* 内边距 */
+    border-radius: 5px; /* 圆角边框 */
+    cursor: pointer;
+    transition: all 0.3s ease; /* 动画效果 */
+}
+
+.pagination .current.prev,
+.pagination .current.next {
+    background-color: #e6f7ff; /* 浅蓝背景 */
+    color: #007bff; /* 蓝色文字 */
+}
+
+.pagination .current.prev:hover,
+.pagination .current.next:hover {
+    background-color: #cce7ff; /* 鼠标悬浮时背景变深 */
+}
+
+.pagination .current.active {
+    background-color: #007bff; /* 选中状态背景 */
+    color: #fff; /* 选中状态文字颜色 */
+    font-weight: bold; /* 加粗 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 增加阴影 */
+}
+
+.pagination .pxofy {
+    font-size: 12px; /* 字体大小 */
+    color: #666; /* 字体颜色 */
+    margin-left: 15px; /* 左边距 */
+    flex-shrink: 0; /* 固定大小 */
+    margin-top: 9px;
+    margin-bottom:15px;
+}
+
+

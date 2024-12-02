@@ -1,0 +1,181 @@
+@charset "utf-8";
+html{*overflow:auto;}
+#main{width:730px;margin:75px auto 0;}
+#main h1.title{width:600px;}
+#bd{margin-bottom:20px;}
+.logo.large{margin:140px auto 10px 160px;width:202px;height:84px;border: red 0px solid;background: url(../img/logo-jike.png) no-repeat center center;background-size: contain; }
+
+/*nav样式*/
+.nav{margin-bottom:10px;}
+.searchList{float:left;padding-left:5px;}
+.searchList .searchItem{float:left;margin-right:15px;font-size:14px;padding:0 0 2px 2px;cursor:pointer;height:18px;}
+.searchList .searchItem.current{color:#0080cc;border-bottom:2px solid #9cc813;font-weight:bold;}
+
+/*input搜索区域*/
+/*********************************************************************************/
+.searchInput {
+  border: 1px solid #ccc; /* 边框颜色更柔和 */
+  padding: 0 15px;
+  outline: none;
+  height: 50px;
+  width: 520px;
+  /*background: url(../img/inputbg.png) no-repeat scroll 10px center; /* 图片背景，微调位置 */
+  background-color: #f9f9f9; /* 背景色更加柔和 */
+  font-size: 17px;
+  border-radius: 25px; /* 圆角边框，让输入框更加现代 */
+  transition: all 0.3s ease; /* 增加过渡效果 */
+}
+
+.searchInput:focus {
+  border-color: #0080cc; /* 聚焦时边框变为蓝色 */
+  box-shadow: 0 0 8px rgba(0, 128, 204, 0.5); /* 增加聚焦时的阴影效果 */
+}
+.inputArea .dataList {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 42px;
+  width: 550px;
+  padding: 5px 0;
+  background: #fff;
+  border: 1px solid #ddd; /* 边框颜色稍微加深 */
+  border-radius: 5px; /* 圆角边框 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 增加阴影效果，使下拉框更立体 */
+  max-height: 300px;
+  /*overflow-y: auto;*/
+}
+
+.inputArea .dataList li {
+  padding: 10px 15px;
+  font-size: 17px;
+  color: #333; /* 调整文字颜色 */
+  cursor: pointer;
+  transition: all 0.3s ease; /* 增加过渡效果 */
+}
+
+.inputArea .dataList li:hover {
+  background-color: #f0f0f0;
+  color: #0080cc; /* 高亮时文本颜色变蓝 */
+  font-weight: bold;
+  transform: translateX(10px); /* 鼠标悬停时增加平移效果 */
+}
+
+.inputArea .dataList li.active {
+  background-color: #d3eafc; /* 当前选中的项高亮显示 */
+  color: #0080cc;
+}
+
+.inputArea .searchButton {
+  position: absolute;
+  left: 500px;
+  top: 6px;
+  width: 50px;
+  height: 42px;
+  background: url(../img/search.png) no-repeat center center; /* 背景图片 */
+  background-size: contain; /* 背景图片自适应按钮大小 */
+  border: none;
+  border-radius: 25px; /* 圆角按钮 */
+  color: white; /* 按钮文本颜色 */
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 42px; /* 使文本垂直居中 */
+  cursor: pointer;
+  transition: all 0.3s ease; /* 平滑过渡效果 */
+}
+
+.inputArea .searchButton:hover {
+  background: url(../img/search.png) no-repeat center center; /* 保持背景图片 */
+  background-size: contain; /* 保持背景图片大小 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 悬停时加大阴影 */
+  transform: translateY(-2px); /* 悬停时按钮轻微上浮 */
+}
+
+.inputArea .searchButton:focus {
+  outline: none; /* 移除聚焦时的默认边框 */
+  box-shadow: 0 0 10px rgba(72, 172, 228, 0.6); /* 聚焦时增加蓝色阴影 */
+}
+
+
+/*******************************************************************************/
+.inputArea{position:relative;margin-bottom:35px;}
+.inputArea /*.searchInput{border:1px solid #bfbfbf;padding:0 15px;outline:none;height:40px;*height:39px;*line-height:40px;width:520px; background:url(../img/inputbg.png);font-size:14px;}*/
+.inputArea .searchButton{position:absolute;left:550px;*left:552px;*top:1px;width:106px;height:42px;*height:41px;background:url(../img/seachbtn.png) no-repeat;border:none;cursor:pointer;}
+/*高级搜索*/
+.inputArea .advanced{position:absolute;font-size:14px;left:674px;top:12px;text-decoration:underline;}
+/*联想下拉区域*/
+/*
+.inputArea .dataList{display:none;position:absolute;left:0;top:42px;*top:43px;width:550px;padding:5px 0;background:#fff;border:1px solid #bfbfbf;border-top:none;}
+.inputArea .dataList li{padding:2px 15px;font-size:14px;}
+.inputArea .dataList li:hover{background:#f0f0f0;color:#0080cc;font-weight:bold;}*/
+
+/*搜索历史区域*/
+/*
+.historyArea{margin:0 auto;width:485px;}
+.historyArea .history {margin-bottom:5px;}
+.historyArea .history label{font-weight:bold;}
+.historyArea .history a{margin-right:12px;}*/
+/* 搜索历史区域 */
+.historyArea {
+  margin-left: 20px;
+  width: 485px;
+  padding: 15px;
+  background-color: #f9f9f9; /* 背景色 */
+  border-radius: 8px; /* 圆角 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+}
+
+/* 历史记录 */
+.history {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd; /* 底部分隔线 */
+}
+
+/* 历史记录标题 */
+.history label {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333; /* 标题文字颜色 */
+  margin-bottom: 8px;
+  display: block; /* 使标签占满一行 */
+}
+
+/* 历史记录链接 */
+.history a {
+  color: #0080cc; /* 链接颜色 */
+  font-size: 14px;
+  text-decoration: none; /* 去掉默认下划线 */
+  padding: 3px 8px;
+  border-radius: 4px; /* 圆角 */
+  transition: background-color 0.3s ease, color 0.3s ease; /* 添加过渡效果 */
+}
+
+/* 链接悬停效果 */
+.history a:hover {
+  background-color: #f0f0f0; /* 背景色 */
+  color: #0056b3; /* 悬停时改变链接颜色 */
+}
+
+/* 多个历史记录之间的间隔 */
+.history a + a {
+  margin-left: 12px; /* 右边的间距 */
+}
+
+.history .historyEmpty {
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+  padding: 15px;
+}
+
+
+/*版权信息*/
+.foot{position:absolute;bottom:0px;width:100%;}
+.foot .wrap{margin:0 auto;}
+.foot .copyright{position:relative;top:-40px;color:#ababab;text-align:center;}
+
+
+.TZ{
+    margin-left:86px;
+}
