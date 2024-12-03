@@ -54,7 +54,18 @@ class SearchView(View):
         except:
             page = 1
 
-        jobbole_count = redis_cli.get("jobbole_count") #获取redis中记录条数数据
+        #jobbole_count = redis_cli.get("jobbole_count") #获取redis中记录条数数据
+        #jobbole_count = redis_cli.get("jobbole_count")
+        article_count = redis_cli.hgetall("article_count")  # 返回字典，键和值都是字符串
+        # 将字节类型转换为字符串
+        article_count = {key.decode(): value.decode() for key, value in article_count.items()}
+        print(article_count)
+        # 如果从 Redis 获取到数据，转换为整数
+        # if jobbole_count:
+        #     jobbole_count = int(jobbole_count)  # 转换为整数类型
+        # else:
+        #     jobbole_count = 0  # 如果没有值，返回0
+
         start_time = datetime.now()
         response = client.search(
             index= "jobbole",
@@ -109,4 +120,6 @@ class SearchView(View):
                                                "total_nums": total_nums,
                                                "page_nums": page_nums,
                                                "last_seconds": last_seconds,
-                                               "jobbole_count": jobbole_count, })
+                                               # "jobbole_count": jobbole_count,
+                                               "article_count": article_count,
+                                               })

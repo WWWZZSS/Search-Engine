@@ -27,7 +27,7 @@ ik_analyzer = CustomAnalyzer("ik_max_word", filter=["lowercase"])
 
 # 4. 定义 Elasticsearch 文档类型：ArticleType****************************************
 class ArticleType(DocType):
-    # 伯乐在线文章类型
+    # 在线文章类型
     suggest = Completion(analyzer=ik_analyzer)  # 用于定义自动补全建议
     title = Text(analyzer="ik_max_word")  # title 字段存储文章的标题，类型为 Text，表示它是一个全文检索字段，使用 ik_max_word 分词器分析文本。
     create_date = Date()
@@ -44,6 +44,28 @@ class ArticleType(DocType):
     class Meta:
         index = "jobbole"  # 定义 Elasticsearch 中索引的名称
         doc_type = "article"  # 定义文档的类型名称
+
+
+class AuthorType(DocType):
+    # 作者信息类
+    suggest = Completion(analyzer="ik_max_word")  # 用于定义自动补全建议
+    # 作者名称，使用 ik_max_word 分词器进行全文检索
+    name = Text(analyzer="ik_max_word")
+    # 作者个人简介，使用 ik_max_word 分词器进行全文检索
+    bio = Text(analyzer="ik_max_word")
+    # 个性签名，使用 ik_max_word 分词器进行全文检索
+    signature = Text(analyzer="ik_max_word")
+    # 作者头像的 URL
+    img_url = Keyword()
+    # 发布的文章数
+    article_count = Integer()
+    # 关注者数量
+    followers_count = Integer()
+
+    class Meta:
+        index = "authors"  # 定义 Elasticsearch 中索引的名称
+        doc_type = "author"  # 定义文档的类型名称
+
 
 if __name__ == "__main__":
     ArticleType.init()
