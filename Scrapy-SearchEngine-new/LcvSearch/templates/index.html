@@ -18,10 +18,12 @@
             	<div class="logo large"></div>
                 </h1>
                 <div class="nav ue-clear">
-                    <ul class="searchList">
+                    <ul class="searchList">  <!-- ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！ -->
                         <li class="searchItem current" data-type="article">文章</li>
-                        <li class="searchItem" data-type="question">问答</li>
-                        <li class="searchItem" data-type="job">职位</li>
+                        <li class="searchItem" data-type="author">作者</li>
+                        <li class="searchItem" data-type="job">求职</li>
+                        <li class="searchItem" data-type="video">视频</li>
+                        <li class="searchItem" data-type="resource">资源</li>
                     </ul>
                 </div>
                 <div class="inputArea">
@@ -39,8 +41,8 @@
                 <div class="historyArea">
                     <p class="history">
                         <label>热门搜索：</label>
-                            <a href="/search?q=UI设计">UI设计</a>
-                            <a href="/search?q=交互">交互</a>
+                            <a href="/search?q=基础">基础</a>
+                            <a href="/search?q=JavaScript">JavaScript</a>
                             <a href="/search?q=人工智能">人工智能</a>
                             <a href="/search?q=大数据">大数据</a>
                             <a href="/search?q=django">django</a>
@@ -73,11 +75,74 @@
 <script type="text/javascript">
     var suggest_url = "{% url "suggest" %}"   //传递搜索建议url的名字
     var search_url = "{% url "search" %}"    //传递搜索跳转url的name
+     // 动态添加 s_type  热门搜索**********************************************
+     // 在点击任何 .search-link 链接时触发
+<!--    $("p.history").on("click", ".search-link", function(event) {-->
+<!--        event.preventDefault();  // 阻止默认的链接跳转-->
+
+<!--        var type = $(".searchItem.current").attr('data-type');-->
+<!--        var href = $(this).attr('href'); // 获取当前 <a> 标签的 href-->
+<!--        var text = $(this).text(); // 获取链接文本作为查询关键词-->
+
+<!--        // 更新 href，动态添加 s_type 参数-->
+<!--        var newHref = href.split('?')[0] + "?q=" + encodeURIComponent(text) + "&s_type=" + encodeURIComponent(type);-->
+
+<!--        // 跳转到新的链接-->
+<!--        window.location.href = newHref;-->
+<!--    });-->
+      //热门搜索点击******************************************************
+      $("p.history a").on("click", function() {
+        var type = $(".searchItem.current").attr('data-type');  // 获取当前选中项的 data-type
+        var href = $(this).attr('href');  // 获取现有的 href
+
+        // 使用正则检查 URL 中是否已有 s_type 参数
+        var regex = /([&?])s_type=[^&]*/;
+
+        if (regex.test(href)) {
+            // 如果已经有 s_type 参数，替换它
+            href = href.replace(regex, '$1s_type=' + type);
+        } else {
+            // 如果没有 s_type 参数，添加它
+            var separator = href.indexOf('?') !== -1 ? '&' : '?';
+            href = href + separator + 's_type=' + type;
+        }
+
+        $(this).attr('href', href);  // 更新 href 属性
+      });
+
+    //我的搜索点击***************************************************
+     $(".history.mysearch a").on("click", function(e) {
+        console.log("进入了我的搜索！！")
+        var type = $(".searchItem.current").attr('data-type');  // 获取当前选中项的 data-type
+        var href = $(this).attr('href');  // 获取现有的 href
+
+        // 使用正则检查 URL 中是否已有 s_type 参数
+        var regex = /([&?])s_type=[^&]*/;
+
+        if (regex.test(href)) {
+            // 如果已经有 s_type 参数，替换它
+            href = href.replace(regex, '$1s_type=' + type);
+        } else {
+            // 如果没有 s_type 参数，添加它
+            var separator = href.indexOf('?') !== -1 ? '&' : '?';
+            href = href + separator + 's_type=' + type;
+        }
+
+        $(this).attr('href', href);  // 更新 href 属性
+      });
+
+
 
 
 	$('.searchList').on('click', '.searchItem', function(){
 		$('.searchList .searchItem').removeClass('current');
 		$(this).addClass('current');
+
+          // 获取并打印当前项的 data-type 值
+        var currentDataType = $(this).attr('data-type');
+        console.log('当前 data-type:', currentDataType);
+
+        MapSearchArr(); // 确保动态更新后应用正确的链接
 	});
 
     function removeByValue(arr, val) {
@@ -103,7 +168,9 @@
                 async: true,
                 success: function(data) {
                     for (var i=0;i<data.length;i++){
-                        tmpHtml += '<li><a href="'+search_url+'?q='+data[i]+'">'+data[i]+'</a></li>'
+                        //tmpHtml += '<li><a href="'+search_url+'?q='+data[i]+'">'+data[i]+'</a></li>'
+                        tmpHtml += '<li><a href="' + search_url + '?q=' + data[i] + '&s_type=' + $(".searchItem.current").attr('data-type') + '">' + data[i] + '</a></li>';
+
                     }
                     $(".dataList").html("")
                     $(".dataList").append(tmpHtml);
@@ -160,7 +227,9 @@
             arrLen = searchArr.length
         }
         for (var i=0;i<arrLen;i++){
-            tmpHtml += '<a href="'+search_url+'?q='+searchArr[i]+'">'+searchArr[i]+'</a>'
+            //tmpHtml += '<a href="'+search_url+'?q='+searchArr[i]+'">'+searchArr[i]+'</a>'
+            tmpHtml += '<a href="'+search_url+'?q='+searchArr[i]+'&s_type='+$(".searchItem.current").attr('data-type')+'">'+searchArr[i]+'</a>';
+
         }
         $(".mysearch .all-search").html(tmpHtml);
     }

@@ -1,17 +1,17 @@
 from django.db import models
 
-
 # 1. 导入所需模块***********************************************
 # Create your models here.
 from datetime import datetime
 # InnerObjectWrapper
 from elasticsearch_dsl import DocType, Date, Nested, Boolean, \
-    analyzer,  Completion, Keyword, Text, Integer
+    analyzer, Completion, Keyword, Text, Integer
 
 from elasticsearch_dsl.analysis import CustomAnalyzer as _CustomAnalyzer
 
 # 创建与本地 Elasticsearch 实例的连接*************************************
 from elasticsearch_dsl.connections import connections
+
 connections.create_connection(hosts=["localhost"])
 
 
@@ -24,6 +24,7 @@ class CustomAnalyzer(_CustomAnalyzer):
 # 3. 定义 IK 分词器*************************************
 # ik_analyzer 是一个自定义的分析器，它使用了 IK 分词器（ik_max_word），这是一个常用的中文分词器，可以有效地分词中文文本。
 ik_analyzer = CustomAnalyzer("ik_max_word", filter=["lowercase"])
+
 
 # 4. 定义 Elasticsearch 文档类型：ArticleType****************************************
 class ArticleType(DocType):
@@ -39,7 +40,8 @@ class ArticleType(DocType):
     comment_nums = Integer()
     fav_nums = Integer()
     tags = Text(analyzer="ik_max_word")  # tags 字段表示文章的标签，使用 ik_max_word 分词器进行分析。
-    content = Text(analyzer="ik_max_word")  # content = Text(analyzer="ik_max_word")：content 字段表示文章的内容，同样使用 ik_max_word 分词器进行分析。
+    content = Text(
+        analyzer="ik_max_word")  # content = Text(analyzer="ik_max_word")：content 字段表示文章的内容，同样使用 ik_max_word 分词器进行分析。
 
     class Meta:
         index = "jobbole"  # 定义 Elasticsearch 中索引的名称
@@ -48,7 +50,7 @@ class ArticleType(DocType):
 
 class AuthorType(DocType):
     # 作者信息类
-    suggest = Completion(analyzer="ik_max_word")  # 用于定义自动补全建议
+    suggest = Completion(analyzer=ik_analyzer)  # 用于定义自动补全建议
     # 作者名称，使用 ik_max_word 分词器进行全文检索
     name = Text(analyzer="ik_max_word")
     # 作者个人简介，使用 ik_max_word 分词器进行全文检索
@@ -69,3 +71,4 @@ class AuthorType(DocType):
 
 if __name__ == "__main__":
     ArticleType.init()
+    AuthorType.init()

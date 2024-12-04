@@ -3,7 +3,7 @@ from elasticsearch_dsl import connections
 from datetime import datetime
 from models import ArticleType  # 引用之前定义的 ArticleType 类
 
-
+# -*- coding: utf-8 -*-
 # 建立连接
 connections.create_connection(hosts=["localhost"])
 
@@ -441,9 +441,201 @@ dataWithSuggest2 = [
     }
     ]
 
+data_xinxi_dj=[
+    {
+        "title": "信息检索基础与实践",
+        "create_date": "2024-07-01",
+        "url": "https://example.com/infosearch",
+        "url_object_id": "234abc",
+        "front_image_url": "https://example.com/image12.jpg",
+        "front_image_path": "/path/to/image12.jpg",
+        "praise_nums": 520,
+        "comment_nums": 160,
+        "fav_nums": 390,
+        "tags": ["信息检索", "搜索引擎", "数据处理"],
+        "content": "本书介绍了信息检索的基础理论和实际应用，涵盖了检索模型、搜索引擎的工作原理以及如何处理和优化数据。书中通过案例分析了从简单的关键词匹配到复杂的自然语言处理（NLP"
+                   "）技术在信息检索中的应用。特别是在大数据时代，如何高效处理海量数据并提升检索精度和速度，书中也有详细讲解。适合对信息检索和搜索引擎优化（SEO）感兴趣的读者。",
+        "suggest": ["搜索引擎优化", "NLP 基础", "大数据处理"],
+        "weight": 5
+    },
+    {
+        "title": "Django Web 开发实战",
+        "create_date": "2024-08-15",
+        "url": "https://example.com/django-web",
+        "url_object_id": "567xyz",
+        "front_image_url": "https://example.com/image13.jpg",
+        "front_image_path": "/path/to/image13.jpg",
+        "praise_nums": 600,
+        "comment_nums": 180,
+        "fav_nums": 450,
+        "tags": ["Django", "Web 开发", "Python"],
+        "content": "本书是 Django Web 开发的实战指南，旨在帮助开发者快速上手 Django 框架并进行实际项目开发。内容包括 Django 的基础知识、模型与视图的设计、路由控制、模板渲染等核心概念，以及如何与数据库进行交互、用户认证与授权、文件上传等功能实现。书中还介绍了如何使用 Django Rest Framework (DRF) 构建 API 和前后端分离开发，适合希望深入学习 Django 的开发者。",
+        "suggest": ["Django 入门", "Web 开发教程", "Python 后端开发"],
+        "weight": 6
+    },
+
+    {
+        "title": "Django 高级编程与优化",
+        "create_date": "2024-08-30",
+        "url": "https://example.com/django-advanced",
+        "url_object_id": "123mno",
+        "front_image_url": "https://example.com/image15.jpg",
+        "front_image_path": "/path/to/image15.jpg",
+        "praise_nums": 510,
+        "comment_nums": 200,
+        "fav_nums": 420,
+        "tags": ["Django", "优化", "性能"],
+        "content": "本书介绍了 Django 框架中的高级编程技术，涵盖了 Django 性能优化的常用技巧、数据库查询优化、缓存技术、异步处理、以及如何扩展 Django 系统以应对高并发的访问量。书中详细阐述了如何进行 Django 项目的调试与测试，以及如何在生产环境中部署高效稳定的 Django Web 应用。适合希望提升 Django 开发效率和性能的高级开发者。",
+        "suggest": ["Django 性能优化", "Web 应用部署", "Python 高级编程"],
+        "weight": 5
+    }
+]
+
+data_javaScript=[
+    {
+        "title": "深入浅出 JavaScript",
+        "create_date": "2024-07-22",
+        "url": "https://example.com/deep-js",
+        "url_object_id": "230abc",
+        "front_image_url": "https://example.com/image12.jpg",
+        "front_image_path": "/path/to/image12.jpg",
+        "praise_nums": 320,
+        "comment_nums": 95,
+        "fav_nums": 220,
+        "tags": ["JavaScript", "前端开发", "编程"],
+        "content": "本书深入探讨了 JavaScript 语言的核心概念，包括作用域、闭包、异步编程、事件循环等。通过一系列实际案例，帮助读者理解 JavaScript 内部机制，并掌握如何在实际项目中高效使用这些概念。此外，还涉及了 ES6 新特性、模块化开发等内容，适合前端开发人员及任何有 JavaScript 基础的程序员。",
+        "suggest": ["JavaScript 基础", "前端开发教程", "ES6 学习"],
+        "weight": 5
+    },
+    {
+        "title": "现代 JavaScript 开发",
+        "create_date": "2024-08-10",
+        "url": "https://example.com/modern-js",
+        "url_object_id": "541xyz",
+        "front_image_url": "https://example.com/image13.jpg",
+        "front_image_path": "/path/to/image13.jpg",
+        "praise_nums": 540,
+        "comment_nums": 210,
+        "fav_nums": 410,
+        "tags": ["JavaScript", "ES6", "React"],
+        "content": "本书介绍了现代 JavaScript 开发中的前沿技术，包括 ES6+ 新特性、React 框架的使用、模块化开发及工具链的配置等。通过多个示例项目，详细讲解了如何使用 JavaScript 构建单页面应用（SPA），并掌握常见的前端开发流程与工具。适合想要提升 JavaScript 技能的开发者以及前端工程师。",
+        "suggest": ["React 教程", "ES6 新特性", "前端开发工具链"],
+        "weight": 6
+    },
+    {
+        "title": "JavaScript 高级编程技巧",
+        "create_date": "2024-09-05",
+        "url": "https://example.com/advanced-js",
+        "url_object_id": "674pqr",
+        "front_image_url": "https://example.com/image14.jpg",
+        "front_image_path": "/path/to/image14.jpg",
+        "praise_nums": 380,
+        "comment_nums": 180,
+        "fav_nums": 300,
+        "tags": ["JavaScript", "编程技巧", "性能优化"],
+        "content": "这本书深入探讨了 JavaScript 编程中的高级技巧与常见难题，内容涵盖了性能优化、内存管理、复杂数据结构的处理、异步编程的最佳实践等。作者通过实际的项目案例，展示了如何提高 JavaScript 代码的效率和可维护性。适合有一定 JavaScript 基础的开发者，尤其是对性能优化和高效编程有兴趣的开发人员。",
+        "suggest": ["JavaScript 性能优化", "高级编程技巧", "异步编程"],
+        "weight": 5
+    },
+    {
+        "title": "JavaScript 与 Node.js 实践",
+        "create_date": "2024-07-30",
+        "url": "https://example.com/js-node",
+        "url_object_id": "890hij",
+        "front_image_url": "https://example.com/image15.jpg",
+        "front_image_path": "/path/to/image15.jpg",
+        "praise_nums": 420,
+        "comment_nums": 160,
+        "fav_nums": 350,
+        "tags": ["JavaScript", "Node.js", "后端开发"],
+        "content": "本书从前端开发的角度介绍了如何使用 Node.js 构建高效的后端应用。通过学习如何在 Node.js 中处理 HTTP 请求、文件系统操作、数据库连接等基础知识，读者将能够快速上手并使用 JavaScript 进行全栈开发。此外，还介绍了如何与前端框架（如 React）进行无缝集成，实现前后端一体化开发。",
+        "suggest": ["Node.js 入门", "JavaScript 全栈开发", "后端开发教程"],
+        "weight": 5
+    },
+    {
+        "title": "JavaScript 数据结构与算法",
+        "create_date": "2024-09-18",
+        "url": "https://example.com/js-algorithms",
+        "url_object_id": "342lmn",
+        "front_image_url": "https://example.com/image16.jpg",
+        "front_image_path": "/path/to/image16.jpg",
+        "praise_nums": 500,
+        "comment_nums": 250,
+        "fav_nums": 420,
+        "tags": ["JavaScript", "数据结构", "算法"],
+        "content": "这本书专注于 JavaScript 中的数据结构与算法。通过循序渐进的讲解，从数组、链表、栈、队列到更复杂的图、树、堆等数据结构，帮助读者掌握常见的编程思路。书中还提供了丰富的算法题，帮助读者掌握排序、查找、动态规划等常见算法，并通过 JavaScript 实现，增强读者的编程能力。",
+        "suggest": ["数据结构与算法", "JavaScript 算法", "编程面试"],
+        "weight": 6
+    }
+]
+
+data_react=[
+{
+    "title": "深入学习 React 应用开发",
+    "create_date": "2024-07-20",
+    "url": "https://example.com/react-app",
+    "url_object_id": "130abc",
+    "front_image_url": "https://example.com/image12.jpg",
+    "front_image_path": "/path/to/image12.jpg",
+    "praise_nums": 500,
+    "comment_nums": 150,
+    "fav_nums": 400,
+    "tags": ["React", "前端开发", "JavaScript"],
+    "content": "本书详细介绍了如何使用 React 构建现代化的单页应用（SPA）。从基础的组件构建到复杂的状态管理，书中不仅包含理论部分，还通过丰富的案例展示了如何在实际项目中应用 React。特别地，书中还探讨了 React 生态中的工具，如 React Router、Redux、Hooks 等，帮助开发者更高效地开发 Web 应用。",
+    "suggest": ["React 框架", "前端工程化", "React Hooks 教程"],
+    "weight": 6
+},
+{
+    "title": "React 性能优化实战",
+    "create_date": "2024-08-10",
+    "url": "https://example.com/react-performance",
+    "url_object_id": "131def",
+    "front_image_url": "https://example.com/image13.jpg",
+    "front_image_path": "/path/to/image13.jpg",
+    "praise_nums": 320,
+    "comment_nums": 80,
+    "fav_nums": 290,
+    "tags": ["React", "性能优化", "前端技术"],
+    "content": "本书专注于 React 应用中的性能优化，涵盖了从渲染优化、代码分割、懒加载到服务器端渲染（SSR）等多种性能提升技术。通过详细的案例分析和实战技巧，读者可以学习如何识别性能瓶颈、使用开发工具进行性能调试，以及如何使用 React 官方工具和第三方库提高应用响应速度和用户体验。",
+    "suggest": ["前端性能优化", "React 组件优化", "性能调试工具"],
+    "weight": 4
+},
+{
+    "title": "React Native 跨平台移动应用开发",
+    "create_date": "2024-09-05",
+    "url": "https://example.com/react-native",
+    "url_object_id": "132ghi",
+    "front_image_url": "https://example.com/image14.jpg",
+    "front_image_path": "/path/to/image14.jpg",
+    "praise_nums": 600,
+    "comment_nums": 180,
+    "fav_nums": 500,
+    "tags": ["React Native", "移动开发", "跨平台应用"],
+    "content": "本书专门针对 React Native 开发跨平台移动应用的技巧与最佳实践。书中从基础的 React Native 设置，到高级的原生模块集成，提供了完整的开发流程和实用的技巧。重点介绍了如何在 iOS 和 Android 平台上编写高效、流畅的移动应用，特别是在性能、调试、用户体验和跨平台兼容性方面的处理。",
+    "suggest": ["React Native 教程", "移动应用开发", "跨平台开发框架"],
+    "weight": 7
+},
+{
+    "title": "React 与 Redux 完全指南",
+    "create_date": "2024-10-12",
+    "url": "https://example.com/react-redux",
+    "url_object_id": "133jkl",
+    "front_image_url": "https://example.com/image15.jpg",
+    "front_image_path": "/path/to/image15.jpg",
+    "praise_nums": 400,
+    "comment_nums": 120,
+    "fav_nums": 350,
+    "tags": ["React", "Redux", "状态管理"],
+    "content": "本书从零开始详细讲解了如何在 React 项目中使用 Redux 进行状态管理。通过通俗易懂的例子和逐步引导，读者将学会如何利用 Redux 中的核心概念，如 Store、Action、Reducer 和 Middleware 来组织应用的状态。书中还特别强调了如何在实际项目中解决异步数据流的挑战，并结合 React-Redux 的最佳实践，帮助开发者在实际开发中提高效率。",
+    "suggest": ["React 状态管理", "Redux 入门", "前端开发架构"],
+    "weight": 5
+}
+
+]
+
 # 向 Elasticsearch 插入数据
 def insert_data():
-    for article in dataWithSuggest2:
+    for article in data_react:
         # 使用 ArticleType 创建数据文档
         article_doc = ArticleType(
             title=article["title"],

@@ -365,3 +365,82 @@ html{*overflow:auto;}
 }
 
 
+/* author部分************************************************************************************************ */
+
+.authorInfo {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.authorImg {
+    flex: 1 1 10%; /* 占据 10% 宽度 */
+    max-width: 90px; /* 限制图片最大宽度 */
+    height: auto; /* 按比例缩放 */
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    object-fit: contain;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.authorDetails {
+    flex: 1 1 90%; /* 占据 90% 宽度 */
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px; /* 为右侧内容添加间距 */
+}
+
+.infoRow {
+    /*display: flex;*/
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0073e6;
+    text-decoration: none;
+}
+
+.title:hover {
+    text-decoration: underline;
+}
+
+.score {
+    color: #666;
+    font-size: 14px;
+    margin-left: 20px;
+}
+
+.articleCount{
+    font-size: 14px;
+    color: #444;
+}
+.followersCount {
+    font-size: 14px;
+    color: #444;
+    margin-left: 50px;
+}
+
+.label {
+    font-weight: bold;
+    color: #555;
+}
+
+.value {
+    font-size: 14px;
+    color: #333;
+}
+
+
+
+
+
+
+
+
