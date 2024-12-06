@@ -1,6 +1,5 @@
 from django.db import models
 
-# 1. 导入所需模块***********************************************
 # Create your models here.
 from datetime import datetime
 # InnerObjectWrapper
@@ -15,18 +14,15 @@ from elasticsearch_dsl.connections import connections
 connections.create_connection(hosts=["localhost"])
 
 
-# 2. 自定义分析器******************************************
 class CustomAnalyzer(_CustomAnalyzer):
     def get_analysis_definition(self):
         return {}
 
 
-# 3. 定义 IK 分词器*************************************
 # ik_analyzer 是一个自定义的分析器，它使用了 IK 分词器（ik_max_word），这是一个常用的中文分词器，可以有效地分词中文文本。
 ik_analyzer = CustomAnalyzer("ik_max_word", filter=["lowercase"])
 
 
-# 4. 定义 Elasticsearch 文档类型：ArticleType****************************************
 class ArticleType(DocType):
     # 在线文章类型
     suggest = Completion(analyzer=ik_analyzer)  # 用于定义自动补全建议

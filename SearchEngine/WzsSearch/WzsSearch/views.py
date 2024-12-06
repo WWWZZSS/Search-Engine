@@ -1,4 +1,4 @@
-# 1. 必要的导入*******************************************************************
+
 import json  # 将返回的内容转为json数据使用
 from django.shortcuts import render
 from django.views.generic.base import View  # 用以SearchSuggest继承
@@ -9,12 +9,12 @@ from elasticsearch import Elasticsearch  # SearchView使用，建立es的连接�
 from datetime import datetime  # 处理查询时间
 import redis  # 处理搜索条数等
 
-# 2. 初始化 Elasticsearch 和 Redis 连接********************************************
+
 client = Elasticsearch(hosts=["127.0.0.1"])  # SearchView使用
 redis_cli = redis.StrictRedis()  # 建立redis的连接
 
 
-# 3. SearchSuggest 视图***************************************************************************
+
 # Create your views here.
 # 搜索建议
 class SearchSuggest(View):
@@ -56,7 +56,7 @@ class SearchSuggest(View):
         return HttpResponse(json.dumps(re_datas), content_type="application/json")
 
 
-# 4. SearchView 视图
+
 class SearchView(View):
     def get(self, request):
         key_words = request.GET.get("q", "")
