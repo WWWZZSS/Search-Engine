@@ -30,5 +30,7 @@ http://localhost:9200/jobbole/_search?q=JavaScript
 ```
 cmd redis-server
 es bin目录下，双击.bat文件
+cd WzsSearch
+python manage.py runserver
 ```
 

@@ -32,7 +32,7 @@ MIDDLEWARE = [
 ]
 
 # 指定URL列表文件 父级URL配置
-ROOT_URLCONF = 'LcvSearch.urls'
+ROOT_URLCONF = 'WzsSearch.urls'
 
 # 加载网页模板路径
 TEMPLATES = [
@@ -52,7 +52,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'LcvSearch.wsgi.application'
+WSGI_APPLICATION = 'WzsSearch.wsgi.application'
 
 
 #######################################################################################
